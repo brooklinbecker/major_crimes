@@ -1,9 +1,10 @@
 ---
-title: "Have Toronto Police Services been successful in materially reducing the frequency of major crimes in high-risk Toronto neighborhoods over the past 10 years?^[These people gave me money]"
+title: "Have Toronto Police Services been successful in materially reducing the frequency of major crimes in high-risk Toronto neighborhoods over the past 10 years?"
 author: 
   - Brooklin Becker
 date: today
 date-format: long
+thanks: "code and data are available at: https://github.com/brooklinbecker/major_crimes.git"
 abstract: "The dataset **Major Crime Indicators** from City of Toronto’s Open Data Portal was analyzed to uncover the Toronto Police Service’s material efficacy in reducing the frequency of major crimes in high-risk Toronto neighborhoods over the ten year period from 2014 to 2023 inclusive. This analysis reveals that for neighborhoods in which their major crime rates are already the highest, there is little progression over the years in those neighborhoods' crime rates dropping comparatively to other neighborhoods. This lack of progression confirms the Toronto Police Service has not materially reduced the frequency of major crimes in high-risk neighbourhoods in this 10 year period. To frame potential causes, the Toronto Police Service's Operating Impact is analyzed and the complex interactions between socio-economic factors, policing, and major crime rates are considered."
 format: pdf
 toc: true
