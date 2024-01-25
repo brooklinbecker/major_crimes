@@ -1,11 +1,11 @@
 ---
-title: "Have Toronto Police Services been successful in materially reducing the frequency of major crimes in high-risk Toronto neighborhoods over the past 10 years?"
+title: "Have Toronto Police Services been successful in materially reducing the frequency of major crimes in high-risk Toronto neighbourhoods over the past 10 years?"
 author: 
   - Brooklin Becker
 date: today
 date-format: long
 thanks: "Code and data are available at: https://github.com/brooklinbecker/major_crimes.git"
-abstract: "The dataset **Major Crime Indicators** from City of Toronto’s Open Data Portal was analyzed to uncover the Toronto Police Service’s material efficacy in reducing the frequency of major crimes in high-risk Toronto neighborhoods over the ten year period from 2014 to 2023 inclusive. This analysis reveals that for neighborhoods in which their major crime rates are already the highest, there is little progression over the years in those neighborhoods' crime rates dropping comparatively to other neighborhoods. This lack of progression confirms the Toronto Police Service has not materially reduced the frequency of major crimes in high-risk neighbourhoods in this 10 year period. To frame potential causes, the Toronto Police Service's Operating Impact is analyzed and the complex interactions between socio-economic factors, policing, and major crime rates are considered."
+abstract: "The dataset **Major Crime Indicators** from City of Toronto’s Open Data Portal was analyzed to uncover the Toronto Police Service’s material success in reducing the frequency of major crimes in high-risk Toronto neighbourhoods over the ten year period from 2014 to 2023 inclusive. This analysis reveals that for neighbourhoods in which their major crime rates are already the highest, there is little progression over the years in those neighbourhoods' crime rates dropping comparatively to other neighbourhoods. This lack of progression confirms the Toronto Police Service has not materially reduced the frequency of major crimes in high-risk neighbourhoods in this 10 year period. To frame potential causes, the Toronto Police Service's Operating Impact is analyzed and the complex interactions between socio-economic factors, policing, and major crime rates are considered."
 format: pdf
 toc: true
 number-sections: true
@@ -34,7 +34,7 @@ library(tinytex)
 # Introduction
 Prior to 2015, the city of Toronto had been experiencing a continuation of a downward trend in the police-reported crime rate that had begun in the early 1990s, marked by the ‘crime drop’ of that same decade [@farrell_homicide_2018]. In fact, the “police-reported crime rate in 2014 was the lowest rate recorded since 1969,” especially in terms of severity and sheer volume [@farrell_homicide_2018] [@2014_crime_stats]. However, 2015 marked a turning point wherein the police-reported crime rate *increased* by 3% from 2014 [@2015_crime_stats]. Though still measuring at 29% lower than the decade previous, the 10 year period between 2014 to 2024 has since continued to see a significant change in socio-economic conditions for Toronto populations, the effects of which are deeply intertwined with crime frequency.
 
-To analyze Toronto Police Services’ response to these dynamic conditions, I utilized the **Major Crime Indicators data set** from **City of Toronto’s Open Data Portal** to compare frequency and distribution of major crime indicators in at-risk^[I consider the top ten neighbourhoods in the first year of this data set, 2014, as the baseline for “high-risk” neighbourhoods, and measure any evidenced material change in deviation from these neighbourhoods punctuating the top 10 in the 5-year period thereafter.] neighbourhoods year-over-year from 2014 to 2023 [@opendatacite]. When conducting the analysis of the major crime frequencies, I analyzed both absolute and relative results to better identify patterns and variance amongst the data. Within this analysis, I aimed to answer the question: have Toronto Police Services been successful in materially reducing the frequency of major crimes in high-risk Toronto neighborhoods over the past 10 years? 
+To analyze Toronto Police Services’ response to these dynamic conditions, I utilized the **Major Crime Indicators data set** from **City of Toronto’s Open Data Portal** to compare frequency and distribution of major crime indicators in at-risk^[I consider the top ten neighbourhoods in the first year of this data set, 2014, as the baseline for “high-risk” neighbourhoods, and measure any evidenced material change in deviation from these neighbourhoods punctuating the top 10 in the 5-year period thereafter.] neighbourhoods year-over-year from 2014 to 2023 [@opendatacite]. When conducting the analysis of the major crime frequencies, I analyzed both absolute and relative results to better identify patterns and variance amongst the data. Within this analysis, I aimed to answer the question: have Toronto Police Services been successful in materially reducing the frequency of major crimes in high-risk Toronto neighbourhoods over the past 10 years? 
 
 My analysis found that Toronto Police Services have not been successful in materially reducing the frequency of major crimes due to the fact that there is only minute, positional variance in the 10 most affected neighbourhoods. Conversely, the analysis of least affected neighbourhoods brought to attention a pattern wherein the Toronto Police Service seem to be more effective at maintaining a low crime rate in a geographical area which already retains a low major crime frequency, as the variation is minimal. These results affirm the complex interplay of socio-economic conditions and violent crime, underscoring the absolute role of restorative justice as a constructive intervention within this system.
 
@@ -43,9 +43,9 @@ In the Data section, the acquisition of the Major Crime Indicators data set is d
 # Data
 
 Data used in this paper was retrieved from the City of Toronto's Open Data Portal 
-which is accessed through the Open Data Toronto library of [@opendatacite]. The data source used is named `Major Crime Indicators` [@majorcrimecite] which was retrieved to analyze major crime reports across Toronto geographical neighborhoods, during the time period of 2014 to 2023, inclusive. The data was collected, cleaned and analyzed in the programming 
+which is accessed through the Open Data Toronto library of [@opendatacite]. The data source used is named `Major Crime Indicators` [@majorcrimecite] which was retrieved to analyze major crime reports across Toronto geographical neighbourhoods, during the time period of 2014 to 2023, inclusive. The data was collected, cleaned and analyzed in the programming 
 language `R` [@citeR]. Supplementary libraries that were utilized during the analysis 
-and compilation of the dataset include `tidyverse` [@tidyversecite], `knitr` [@knitrcite], 
+and compilation of the data set include `tidyverse` [@tidyversecite], `knitr` [@knitrcite], 
 `janitor` [@janitorcite], `dbplyr` [@dbplyrcite], and `ggplot2` [@ggplotcite].
 
 ## Frequency of Major Crime Indicators
@@ -229,6 +229,7 @@ Now, I will display the progression of the number of annual major crime reports 
 #| echo: false
 #| include: true
 
+#Generating bar graph
 ggplot(cleaned_crime_data, aes(x = Year)) +
   geom_bar(fill = "skyblue", color = "black") +
   labs(title = "Number of Major Crimes Each Year", x = "Year",
@@ -241,15 +242,15 @@ ggplot(cleaned_crime_data, aes(x = Year)) +
 
 # Results
 
-## Tail Analysis of Neighborhoods Affected By All Five Major Crimes
+## Tail Analysis of Neighbourhoods Affected By All Five Major Crimes
 
-In this section, I will analyze the neighborhoods **most** and **least** affected by all
-five major crime indicators. Then, in the following section, I will analyze the neighborhoods 
+In this section, I will analyze the neighbourhoods **most** and **least** affected by all
+five major crime indicators. Then, in the following section, I will analyze the neighbourhoods 
 most and least affected by violent crimes, namely only reported assaults.
 
 For the time period of 2014 to 2023, inclusive, I compared the 10 
-neighborhoods in which the most major crimes were reported in the former 5 
-years with the 10 most affected neighborhoods in the latter 5 years, shown in back-to-back tables below.
+neighbourhoods in which the most major crimes were reported in the former 5 
+years with the 10 most affected neighbourhoods in the latter 5 years, shown in back-to-back tables below.
 
 ```{r}
 #| echo: false
@@ -260,23 +261,23 @@ years with the 10 most affected neighborhoods in the latter 5 years, shown in ba
 major_crimes_before_2019 <- cleaned_crime_data %>%
   filter(Year < 2019)
 
-# Count the number of major crimes per neighborhood
+# Count the number of major crimes per neighbourhood
 
 major_crimes_by_neighborhood_1 <- major_crimes_before_2019 %>%
   group_by(Neighborhood) %>%
   summarise(NumberOfMajorCrimes = n()) %>%
   arrange(desc(NumberOfMajorCrimes))
 
-# Selecting the top 10 neighborhoods
+# Selecting the top 10 neighbourhoods
 
 top_10_neighborhoods_3 <- head(major_crimes_by_neighborhood_1, 10)
 
-#Calculating the sum across all 10 neighborhoods
+#Calculating the sum across all 10 neighbourhoods
 total_major_crimes_1 <- sum(top_10_neighborhoods_3$NumberOfMajorCrimes)
 
 total_row <- data.frame(Neighborhood = "Total", NumberOfMajorCrimes = total_major_crimes_1)
 
-#Line separating the 10th neighborhood and the total row
+#Line separating the 10th neighbourhood and the total row
 separator_row <- data.frame(Neighborhood = "------------------", NumberOfMajorCrimes = "--------")
 
 #Combining the table and summed row
@@ -284,7 +285,7 @@ table_data_3 <- rbind(top_10_neighborhoods_3, separator_row, total_row)
 
 colnames(table_data_3)[2] <- "Number of Major Crimes"
 
-kable(table_data_3, caption = "**Top 10 Neighborhoods with Most Major 
+kable(table_data_3, caption = "**Top 10 Neighbourhoods with Most Major 
       Crimes Reported from 2014 to 2018, inclusive**")
 
 ```
@@ -298,23 +299,23 @@ kable(table_data_3, caption = "**Top 10 Neighborhoods with Most Major
 major_crimes_after_2018 <- cleaned_crime_data %>%
   filter(Year > 2018)
 
-# Count the number of major crimes per neighborhood
+# Count the number of major crimes per neighbourhood
 
 major_crimes_by_neighborhood_2 <- major_crimes_after_2018 %>%
   group_by(Neighborhood) %>%
   summarise(NumberOfMajorCrimes = n()) %>%
   arrange(desc(NumberOfMajorCrimes))
 
-# Selecting the top 10 neighborhoods
+# Selecting the top 10 neighbourhoods
 
 top_10_neighborhoods_4 <- head(major_crimes_by_neighborhood_2, 10)
 
-#Calculating the sum across all 10 neighborhoods
+#Calculating the sum across all 10 neighbourhoods
 total_major_crimes_2 <- sum(top_10_neighborhoods_4$NumberOfMajorCrimes)
 
 total_row <- data.frame(Neighborhood = "Total", NumberOfMajorCrimes = total_major_crimes_2)
 
-#Line separating the 10th neighborhood and the total row
+#Line separating the 10th neighbourhood and the total row
 separator_row <- data.frame(Neighborhood = "------------------", NumberOfMajorCrimes = "--------")
 
 #Combining the table and summed row
@@ -322,16 +323,16 @@ table_data_4 <- rbind(top_10_neighborhoods_4, separator_row, total_row)
 
 colnames(table_data_4)[2] <- "Number of Major Crimes"
 
-kable(table_data_4, caption = "**Top 10 Neighborhoods with Most Major 
+kable(table_data_4, caption = "**Top 10 Neighbourhoods with Most Major 
       Crimes Reported from 2019 to 2023, inclusive**")
 
 ```
 
-Evidently, out of the 10 neighborhoods most affected by major crimes in 
+Evidently, out of the 10 neighbourhoods most affected by major crimes in 
 the former 5 years of the aforementioned time period, all 10 of those 
-neighborhoods appear again in the latter 5 years. 
+neighbourhoods appear again in the latter 5 years. 
 
-It is important to examine both ends of the neighborhood crime spectrum to understand more about the distribution of reported crimes across Toronto neighborhoods. Now I will observe whether the safest neighborhoods in the former 5 years of the time period also remain the safest neighborhoods in the latter 5 years, or if they differ 
+It is important to examine both ends of the neighbourhood crime spectrum to understand more about the distribution of reported crimes across Toronto neighbuorhoods. Now I will observe whether the safest neighbourhoods in the former 5 years of the time period also remain the safest neighbourhoods in the latter 5 years, or if they differ 
 materially.
 
 ```{r}
@@ -343,23 +344,23 @@ materially.
 major_crimes_before_2019 <- cleaned_crime_data %>%
   filter(Year < 2019)
 
-# Count the number of major crimes per neighborhood
+# Count the number of major crimes per neighbourhood
 
 major_crimes_by_neighborhood_1 <- major_crimes_before_2019 %>%
   group_by(Neighborhood) %>%
   summarise(NumberOfMajorCrimes = n()) %>%
   arrange(desc(NumberOfMajorCrimes))
 
-# Selecting the top 10 neighborhoods
+# Selecting the top 10 neighbourhoods
 
 bottom_10_neighborhoods_3 <- tail(major_crimes_by_neighborhood_1, 10)
 
-#Calculating the sum across all 10 neighborhoods
+#Calculating the sum across all 10 neighbourhoods
 total_major_crimes_1 <- sum(bottom_10_neighborhoods_3$NumberOfMajorCrimes)
 
 total_row <- data.frame(Neighborhood = "Total", NumberOfMajorCrimes = total_major_crimes_1)
 
-#Line separating the 10th neighborhood and the total row
+#Line separating the 10th neighbourhood and the total row
 separator_row <- data.frame(Neighborhood = "------------------", NumberOfMajorCrimes = "--------")
 
 #Combining the table and summed row
@@ -367,7 +368,7 @@ table_data_3 <- rbind(bottom_10_neighborhoods_3, separator_row, total_row)
 
 colnames(table_data_3)[2] <- "Number of Major Crimes"
 
-kable(table_data_3, caption = "**The 10 Neighborhoods with the Least Major 
+kable(table_data_3, caption = "**The 10 Neighbourhoods with the Least Major 
       Crimes Reported from 2014 to 2018, inclusive**")
 
 ```
@@ -381,23 +382,23 @@ kable(table_data_3, caption = "**The 10 Neighborhoods with the Least Major
 major_crimes_after_2018 <- cleaned_crime_data %>%
   filter(Year > 2018)
 
-# Count the number of major crimes per neighborhood
+# Count the number of major crimes per neighbourhood
 
 major_crimes_by_neighborhood_2 <- major_crimes_after_2018 %>%
   group_by(Neighborhood) %>%
   summarise(NumberOfMajorCrimes = n()) %>%
   arrange(desc(NumberOfMajorCrimes))
 
-# Selecting the bottom 10 neighborhoods
+# Selecting the bottom 10 neighbourhoods
 
 bottom_10_neighborhoods_4 <- tail(major_crimes_by_neighborhood_2, 10)
 
-#Calculating the sum across all 10 neighborhoods
+#Calculating the sum across all 10 neighbourhoods
 total_major_crimes_2 <- sum(bottom_10_neighborhoods_4$NumberOfMajorCrimes)
 
 total_row <- data.frame(Neighborhood = "Total", NumberOfMajorCrimes = total_major_crimes_2)
 
-#Line separating the 10th neighborhood and the total row
+#Line separating the 10th neighbourhood and the total row
 separator_row <- data.frame(Neighborhood = "------------------", NumberOfMajorCrimes = "--------")
 
 #Combining the table and summed row
@@ -405,27 +406,27 @@ table_data_4 <- rbind(bottom_10_neighborhoods_4, separator_row, total_row)
 
 colnames(table_data_4)[2] <- "Number of Major Crimes"
 
-kable(table_data_4, caption = "**The 10 Neighborhoods with the Least Major 
+kable(table_data_4, caption = "**The 10 Neighbourhoods with the Least Major 
       Crimes Reported from 2019 to 2023, inclusive**")
 
 ```
 
-I observed from the two tables above, that 7 of the 10 neighborhoods least 
+I observed from the two tables above, that 7 of the 10 neighbourhoods least 
 affected by major crimes in the first half of the last decade also carry over as the least 
-affected neighborhoods in the second half of the last decade. This figure can be 
-compared to the previously compiled number of all 10 of the 10 neighborhoods 
+affected neighbourhoods in the second half of the last decade. This figure can be 
+compared to the previously compiled number of all 10 of the 10 neighbourhoods 
 most affected by major crimes also carrying over to the second half of the decade. 
 
 As an aside; I consulted ChatGPT 3.5 to assist in generating the tables (Table 3, Table 4, Table 5, and Table 6), along with the total in each table [@chatcite].
 
-## Tail Analysis of Neighborhoods Affected By Violent Crimes (Assaults)
+## Tail Analysis of Neighbourhoods Affected By Violent Crimes (Assaults)
 
 As stated in the prior section, I aimed to narrow my search to examine only 
-violent crimes, namely assaults reported in each neighborhood.
+violent crimes, namely assaults reported in each neighbourhood.
 
-For the time period of 2014 to 2023, inclusive, I compared the 10 neighborhoods 
+For the time period of 2014 to 2023, inclusive, I compared the 10 neighbourhoods 
 in which the most assault crimes were reported in the former 5 years as shown in 
-the above table, with the 10 most affected neighborhoods in the latter 5 years, 
+the above table, with the 10 most affected neighbourhoods in the latter 5 years, 
 as shown below in back-to-back tables.
 
 ```{r}
@@ -503,11 +504,11 @@ kable(table_data_2, caption = "**Top 10 Neighborhoods with Most Assaults
 
 ```
 
-I deduced that out of the 10 neighborhoods most affected by assault crimes in 
+I deduced that out of the 10 neighbourhoods most affected by assault crimes in 
 the former 5 years of the aforementioned time period, 8 of those same 
-neighborhoods appear again in the latter 5 years.
+neighbourhoods appear again in the latter 5 years.
 
-Once again, we must examine both ends of the spectrum, and so I will display the results below for the 10 neighborhoods least affected by assaults in the first 5 years, and then the 10 neighborhoods least affected by assaults in the latter 5 years of the last decade.
+Once again, we must examine both ends of the spectrum, and so I will display the results below for the 10 neighbourhoods least affected by assaults in the first 5 years, and then the 10 neighbourhoods least affected by assaults in the latter 5 years of the last decade.
 
 ```{r}
 #| echo: false
@@ -518,23 +519,23 @@ Once again, we must examine both ends of the spectrum, and so I will display the
 assaults_before_2019 <- cleaned_crime_data %>%
   filter(Year < 2019, CrimeCategory == "Assault")
 
-# Count the number of assaults per neighborhood
+# Count the number of assaults per neighbourhood
 
 assaults_by_neighborhood_1 <- assaults_before_2019 %>%
   group_by(Neighborhood) %>%
   summarise(NumberOfAssaults = n()) %>%
   arrange(desc(NumberOfAssaults))
 
-# Selecting the bottom 10 neighborhoods
+# Selecting the bottom 10 neighbourhoods
 
 bottom_10_neighborhoods_1 <- tail(assaults_by_neighborhood_1, 10)
 
-#Calculating the sum across all 10 neighborhoods
+#Calculating the sum across all 10 neighbourhoods
 total_assaults_1 <- sum(bottom_10_neighborhoods_1$NumberOfAssaults)
 
 total_row <- data.frame(Neighborhood = "Total", NumberOfAssaults = total_assaults_1)
 
-#Line separating the 10th neighborhood and the total row
+#Line separating the 10th neighbourhood and the total row
 separator_row <- data.frame(Neighborhood = "------------------", NumberOfAssaults = "--------")
 
 #Combining the table and summed row
@@ -542,7 +543,7 @@ table_data_1 <- rbind(bottom_10_neighborhoods_1, separator_row, total_row)
 
 colnames(table_data_1)[2] <- "Number of Assaults"
 
-kable(table_data_1, caption = "**The 10 Neighborhoods with the Least Assaults 
+kable(table_data_1, caption = "**The 10 Neighbourhoods with the Least Assaults 
       Reported from 2014 to 2018, inclusive**")
 ```
 
@@ -555,23 +556,23 @@ kable(table_data_1, caption = "**The 10 Neighborhoods with the Least Assaults
 assaults_after_2018 <- cleaned_crime_data %>%
   filter(Year > 2018, CrimeCategory == "Assault")
 
-# Count the number of assaults per neighborhood
+# Count the number of assaults per neighbourhood
 
 assaults_by_neighborhood_2 <- assaults_after_2018 %>%
   group_by(Neighborhood) %>%
   summarise(NumberOfAssaults = n()) %>%
   arrange(desc(NumberOfAssaults))
 
-# Selecting the top 10 neighborhoods
+# Selecting the top 10 neighbourhoods
 
 bottom_10_neighborhoods_2 <- tail(assaults_by_neighborhood_2, 10)
 
-#Calculating the sum across all 10 neighborhoods
+#Calculating the sum across all 10 neighbourhoods
 total_assaults_2 <- sum(bottom_10_neighborhoods_2$NumberOfAssaults)
 
 total_row <- data.frame(Neighborhood = "Total", NumberOfAssaults = total_assaults_2)
 
-#Line separating the 10th neighborhood and the total row
+#Line separating the 10th neighbourhood and the total row
 separator_row <- data.frame(Neighborhood = "------------------", NumberOfAssaults = "--------")
 
 #Combining the table and summed row
@@ -579,52 +580,52 @@ table_data_2 <- rbind(bottom_10_neighborhoods_2, separator_row, total_row)
 
 colnames(table_data_2)[2] <- "Number of Assaults"
 
-kable(table_data_2, caption = "**The 10 Neighborhoods with the Least Assaults 
+kable(table_data_2, caption = "**The 10 Neighbourhoods with the Least Assaults 
       Reported from 2019 to 2023, inclusive**")
 
 ```
 
-I observed from the two tables above, that 6 of the 10 neighborhoods least affected 
+I observed from the two tables above, that 6 of the 10 neighbourhoods least affected 
 by assaults in the first half of the last decade also carry over as the least 
-affected neighborhoods in the second half of the last decade. This figure can be 
-compared to the previously compiled number of 8 of the 10 neighborhoods most affected 
+affected neighbourhoods in the second half of the last decade. This figure can be 
+compared to the previously compiled number of 8 of the 10 neighbourhoods most affected 
 by assaults also carrying over to the second half of the decade.
 
 As an aside; I consulted ChatGPT 3.5 to assist in generating the tables (Table 7, Table 8, Table 9, and Table 10), along with the total in each table [@chatcite].
 
-## Comparison of Results in Neighborhoods Affected by All Major Crimes (MCs) and only Violent Crimes (VCs)
+## Comparison of Results in Neighbourhoods Affected by All Major Crimes (MCs) and only Violent Crimes (VCs)
 
-When comparing the progression of the 10 neighborhoods most affected by major crimes (MCs) over the time period of 2014 to 2023, to the 10 neighborhoods least affected by MCs over the same time period, I noticed that while 3 of the least affected neighborhoods in 
-the first 5 years were replaced by other neighborhoods whose MC rates reduced 
-comparatively, this was not the case for neighborhoods that were most affected by MCs.
+When comparing the progression of the 10 neighbourhoods most affected by major crimes (MCs) over the time period of 2014 to 2023, to the 10 neighbourhoods least affected by MCs over the same time period, I noticed that while 3 of the least affected neighbourhoods in 
+the first 5 years were replaced by other neighbourhoods whose MC rates reduced 
+comparatively, this was not the case for neighbourhoods that were most affected by MCs.
 
-While the ordering of the most affected neighborhoods may have changed, the fact 
-is that those same 10 neighborhoods were still the most affected even in the latter 5 
+While the ordering of the most affected neighbourhoods may have changed, the fact 
+is that those same 10 neighbourhoods were still the most affected even in the latter 5 
 years of the time period. 
 
-A similar phenomenon occurred when comparing the progression of the 10 neighborhoods most affected by violent crimes (VCs) to the 10 neighborhoods least affected by VCs over 
-the aforementioned time period. For neighborhoods most affected by VCs, I found that 
-only 2 neighborhoods were replaced moving into the second half of the decade, whereas for 
-neighborhoods least affected by VCs, 4 of the neighborhoods were replaced moving 
+A similar phenomenon occurred when comparing the progression of the 10 neighbourhoods most affected by violent crimes (VCs) to the 10 neighbourhoods least affected by VCs over 
+the aforementioned time period. For neighbourhoods most affected by VCs, I found that 
+only 2 neighbourhoods were replaced moving into the second half of the decade, whereas for 
+neighbourhoods least affected by VCs, 4 of the neighbourhoods were replaced moving 
 into the latter half of the decade.
 
-From this, we can observe that for neighborhoods in which major crime rates are already low, there is more variation in those neighborhoods having their crime rates reduced comparatively to other neighborhoods with similarly low crime rates, implying that police 
+From this, we can observe that for neighbourhoods in which major crime rates are already low, there is more variation in those neighbourhoods having their crime rates reduced comparatively to other neighbourhoods with similarly low crime rates, implying that police 
 intervention may be more effective in affecting crime rates of generally safe 
-neighborhoods.
+neighbourhoods
 
-However, for neighborhoods in which their major crime rates are already the highest, there is very little progression over the years in those neighborhood crime rates dropping comparatively to other neighborhoods. Thus, there is very little evidence that 
+However, for neighbourhoods in which their major crime rates are already the highest, there is very little progression over the years in those neighbourhoods crime rates dropping comparatively to other neighbourhoods Thus, there is very little evidence that 
 Toronto Police is able to reduce the prevalence and frequency of major crimes 
-occurring in the most affected neighborhoods. In the next section, I will discuss 
+occurring in the most affected neighbourhoods. In the next section, I will discuss 
 possible causes of this data, and examine a possible relationship between crime rates 
 and the Toronto Police Service's Operating Impact.
 
 # Discussion
 
-Overall, I cannot say there has been a material reduction in the frequency of major crimes in high-risk Toronto neighbourhoods over the past 10 years. Though their stratification may differ, the 10 variable neighbourhoods which experience the highest frequency have remained the same from 2014 to 2023, inclusive. Social, political and cultural events of the last decade, and their intrinsic relationship with the nature of crime and policing may potentially explain the 17.6% raise in major crime indicators in 2023 [@torontosuncite]. 
+Overall, I cannot say there has been a material reduction in the frequency of major crimes in high-risk Toronto neighbourhoods over the past 10 years. Though their stratification may differ, the 10 variable neighbourhoods which experience the highest frequency have remained the same from 2014 to 2023 inclusive. Socio-economic, political and cultural events of the last decade, and their intrinsic relationship with the nature of crime and policing may potentially explain the 17.6% raise in major crime indicators in 2023 [@torontosuncite]. 
 
 It is certain that socio-economic and environmental factors contribute considerably to the temporal and spatial distribution of violent crimes. This is particularly true of urban areas, wherein an ‘urban area’ refers to a geographic area with socioeconomic, demographic and built-environment characteristics which effect an informal separation from comparably affluent areas [@builtenvironment].
 
-Considering this broader context, it is evident that the living impact events such as the economic fluctuations; the COVID-19 pandemic; the Black Lives Matter Movement and responsive over-policing; and Trump-era weaponized political polarization and consequential social unrest (to name a few) all contribute to the complex composition of major crimes and thus overall crime rates.
+Considering this broader context, it is evident that the living impact of events such as the economic fluctuations; the COVID-19 pandemic; the Black Lives Matter Movement and responsive over-policing; and Trump-era weaponized political polarization and consequential social unrest, (to name a few) all contribute to the complex composition of major crimes and thus overall crime rates.
 
 We can specifically consider the 2020 social movement to de-fund police services across North America—assuming Toronto Police Services were subject to de-funding, we can assume the effective trade-off becomes the exchange of over-policing for a significantly reduced operating impact [@tvocite]. But just how much of an impact might this have on crime rates in Toronto neighbourhoods?
 
@@ -670,7 +671,7 @@ ggplot(data, aes(x = MajorCrimes, y = TotalProjectsImpact)) +
 
 Based on the linear correlation coefficient of 0.577 between the two variables for 
 the time period of 2014 to 2023, inclusive, one could hypothesize that a positive relationship exists between the annual number of major crimes reported in Toronto 
-neighborhoods and the Operating Impact for the Toronto Police Service.
+neighbourhoods and the Operating Impact for the Toronto Police Service.
 
 However, it is important to remember that correlation does not imply causation; 
 meaning that despite there being a moderately strong, positive relationship between 
@@ -678,7 +679,7 @@ these two variables, it is not necessarily true that higher crime rates are asso
 with higher Operating Impact for the police. As aforementioned, for broad data sets such as crime data for a metropolis like Toronto, there are many moving pieces and potential factors which may affect the crime rate in a given year.
 
 For example, a naturally increasing population over time will consequently increase the number of crimes reported, all else remaining the same. As well, a lag in the City 
-of Toronto's public policy may have a slower effect on impacting a meaningful reduction in the number of crimes occurring in Toronto neighborhoods, which could mean that perhaps in the next 5 or 10 years, we may observe more material impacts in the reduction of major crimes or specifically violent crimes in high-risk neighborhoods.
+of Toronto's public policy may have a slower effect on impacting a meaningful reduction in the number of crimes occurring in Toronto neighbourhoods, which could mean that perhaps in the next 5 or 10 years, we may observe more material impacts in the reduction of major crimes or specifically violent crimes in high-risk neighbourhoods
 
 Finally, it is also possible that a higher percentage of people who actually were 
 assaulted ended up reporting the crime due to the severity of the crime, compared 
@@ -690,7 +691,9 @@ other major crime indicators still represent severe crimes.
 
 # Conclusion
 
-This paper analyzes the Toronto Police Services’ efficacy in materially reducing the frequency of major crime indicators in high-risk neighbourhoods across Toronto from 2013 to 2024 inclusive. Data analysis shows that the Toronto Police Service has **not** materially reduced the frequency of major crime indicators in the last 10 years, instead showing a correlation between stagnating major crime indicator frequency in low-risk neighbourhoods. This correlation points to the unrest which exists in the bedrock of the top 10 high-risk neighbourhoods as a result of socioeconomic, demographic and built-environment characteristics, suggesting that the complex systems which underscore police-reported crime and the performance of violent crime itself revolve deeply around large- and small-scale factors, events and phenomena.
+This paper analyzes the Toronto Police Services’ success in materially reducing the frequency of major crime indicators in high-risk neighbourhoods across Toronto from 2013 to 2024 inclusive. Data analysis shows that the Toronto Police Service has **not** materially reduced the frequency of major crime indicators in the last 10 years, instead showing a correlation between stagnating major crime indicator frequency in low-risk neighbourhoods. This correlation points to the unrest which exists in the bedrock of the top 10 high-risk neighbourhoods as a result of socioeconomic, demographic and built-environment characteristics, suggesting that the complex systems which underscore police-reported crime and the performance of violent crime itself revolve deeply around large- and small-scale factors, events and phenomena.
+
+\newpage
 
 # References {.unnumbered}
 
