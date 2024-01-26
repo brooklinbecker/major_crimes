@@ -29,7 +29,7 @@ library(ggplot2)
 library(bibtex)
 library(tinytex)
 library(ggtext)
-
+library(bookdown)
 ```
 
 # Introduction
@@ -43,7 +43,7 @@ The 158 Neighbourhood configuration (new geographical boundaries implemented cir
 
 Ultimately, my analysis found that Toronto Police Services have not been successful in materially reducing the frequency of major crimes due to the fact that there is only minute, positional variance within the stratification of the 10 most affected neighbourhoods. Conversely, my analysis of least affected neighbourhoods brought to attention a pattern wherein the Toronto Police Service seem to be more effective at maintaining a low crime rate in a geographical area which *already* retains a low major crime frequency, as the variation is minimal. These results affirm the complex interplay of socio-economic conditions and violent crime, most notably assault; thus underscoring the absolute role of the embodiment of restorative justice within policing practices.
 
-In Section 2 - Data, the acquisition of the Major Crime Indicators data set is discussed, as well as the data cleaning process applied to the data prior to initial analysis. The Results section, Section 3, follows with analyzing persistent patterns in major crime frequency from 2014 to 2023, inclusive, and examining the specific crime category of Assault to identify any subtle meaning within the data. Section 4, Discussion, synthesizes these analyses, concluding that there is no material reduction in major crime frequencies in high-risk neighbourhoods over the past decade. The paper concludes with a brief look into the broader socio-economic factors which contribute to the complex composition of major crime and thus overall crime rates.
+In the Data section, the acquisition of the Major Crime Indicators data set is discussed, as well as the data cleaning process applied to the data prior to initial analysis. The Results section follows with analyzing persistent patterns in major crime frequency from 2014 to 2023, inclusive, and examining the specific crime category of Assault to identify any subtle meaning within the data. The discussion section then synthesizes these analyses, concluding that there is no material reduction in major crime frequencies in high-risk neighbourhoods over the past decade. The paper concludes with a brief look into the broader socio-economic factors which contribute to the complex composition of major crime and thus overall crime rates.
 
 # Data
 
