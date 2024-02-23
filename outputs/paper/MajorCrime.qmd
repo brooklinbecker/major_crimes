@@ -1,11 +1,11 @@
 ---
-title: "Have Toronto Police Services been successful in materially reducing the frequency of major crimes in high-risk Toronto neighbourhoods over the past 10 years?"
+title: "Measuring Material Progression in Toronto's Major Crime Frequency"
 author: 
   - Brooklin Becker
 date: today
 date-format: long
 thanks: "Code and data are available at: https://github.com/brooklinbecker/major_crimes.git"
-abstract: "The data set **Major Crime Indicators** from City of Toronto’s Open Data Portal was analyzed to uncover the Toronto Police Service’s material success in reducing the frequency of major crimes in high-risk Toronto neighbourhoods over the 10 year period from 2014 to 2023, inclusive. This analysis reveals that for neighbourhoods in which their major crime rates are already the highest, there is little progression over the years in those neighbourhoods' crime rates dropping comparatively to other neighbourhoods. This lack of progression confirms the Toronto Police Service has not materially reduced the frequency of major crimes in high-risk neighbourhoods in this 10 year period. To frame potential causes, the Toronto Police Service's Operating Impact is analyzed and the complex interactions between socio-economic factors, policing, and major crime rates are considered."
+abstract: "The data set **Major Crime Indicators** from City of Toronto’s Open Data Portal was analyzed to assess the Toronto Police Service's efficacy in reducing major crime frequency in high-risk neighbourhoods from 2014 to 2023. The analysis indicates minimal decline in crime rates in these neighbourhoods compared to others over the decade. This lack of progress suggests the Toronto Police Service has not significantly reduced major crime frequency in high-risk areas during this period. To explore potential causes, the analysis includes the Toronto Police Service's Operating Impact and examines the intricate relationships among socio-economic factors, policing, and major crime rates."
 format: pdf
 toc: true
 number-sections: true
@@ -33,22 +33,22 @@ library(bookdown)
 ```
 
 # Introduction
-Prior to 2015, the city of Toronto had been experiencing a continuation of a downward trend in the police-reported crime rate that had begun in the early 1990s, marked by the ‘crime drop’ of that same decade [@farrell_homicide_2018]. In fact, the “police-reported crime rate in 2014 was the lowest rate recorded since 1969” [@farrell_homicide_2018], especially in terms of severity and sheer volume [@2014_crime_stats]. However, 2015 marked a turning point wherein the police-reported crime rate *increased* by 3% from 2014 [@2015_crime_stats]. Though still measuring at 29% lower than the decade previous, the 10 year period between 2014 to 2023, inclusive, has since continued to see a significant change in socio-economic conditions for Toronto's population, the effects of which are deeply intertwined with crime frequency.
+Prior to 2015, the city of Toronto experienced a continuation of a downward trend in the police-reported crime rate that had commenced in the early 1990s, characterized by the 'crime drop' of that same decade [@farrell_homicide_2018]. In fact, the “police-reported crime rate in 2014 was the lowest rate recorded since 1969” [@farrell_homicide_2018], particularly in terms of severity and sheer volume [@2014_crime_stats]. However, 2015 marked a turning point wherein the police-reported crime rate *increased* by 3% from 2014 [@2015_crime_stats]. Though still measuring at 29% lower than the decade previous, the 10 year period between 2014 to 2023, inclusive, has since witnessed significant changes in socio-economic conditions for Toronto's population, the effects of which are deeply intertwined with crime frequency.
 
-To analyze Toronto Police Services’ response to these dynamic conditions, I utilized the **Major Crime Indicators data set** from **City of Toronto’s Open Data Portal** to compare frequency and distribution of major crime indicators in high-risk^[I consider the top ten neighbourhoods in the first year of this data set, 2014, as the baseline for “high-risk” neighbourhoods, and measure any evidenced material change in deviation from these neighbourhoods punctuating the top 10 in the 5-year period thereafter.] neighbourhoods year-over-year from 2014 to 2023, inclusive [@opendatacite]. When conducting the analysis of the major crime frequencies, I analyzed both absolute and relative results to better identify patterns and variance amongst the data, as evident in Section 2.1 @tbl-t1 and @tbl-t2. Within this analysis, I aimed to satisfy the question: have Toronto Police Services been successful in materially reducing the frequency of major crimes in high-risk Toronto neighbourhoods over the past 10 years? 
+To analyze the response of the Toronto Police Services to these dynamic conditions, the data set **Major Crime Indicators** from the City of Toronto's **Open Data Portal** was utilized to compare the frequency and distribution of major crime indicators in high-risk neighbourhoods^[The top ten neighbourhoods in the first year of this data set, 2014, are considered as the baseline for “high-risk” neighbourhoods, and measure any evidenced material change in deviation from these neighbourhoods punctuating the top 10 in the 5-year period thereafter.] year-over-year from 2014 to 2023, inclusive [@opendatacite]. When conducting the analysis of the major crime frequencies, both absolute and relative results were analyzed to better identify patterns and variances among the data, as detailed in Section 2.1 @tbl-t1 and @tbl-t2. Within this analysis, the aim was to address the question: Has the Toronto Police Services been successful in materially reducing the frequency of major crimes in high-risk Toronto neighbourhoods over the past 10 years?
 
-The 158 Neighbourhood configuration (new geographical boundaries implemented circa 2022 [@neighbourhoodscite]) was chosen as opposed to taking data from the previous 140 Neighbourhood configuration to reflect the current City of Toronto neighbourhood composition. @fig-map provides a visual representation of the 10 most high-risk neighbourhoods, where 1 = West Humber-Claireville; 2 = York University Heights; 3 = Annex; 4 = Kensington-Chinatown; 5 = Wellington Place; 6 = Yonge-Bay Corridor; 7 = Downtown Yonge East ; 8 = Moss Park; 9 = West Hill. 'NSA' is listed within the top 10 high-risk neigbourhoods, however it is not defined on Open Data Toronto, the Toronto Police Service's website, nor any other resource I can identify. As it cannot be defined, the specificity of the variable or neighbourhood boundary is not of great concern as we understand that this unidentified region sits in the top 10 regardless.
+The 158 Neighbourhood configuration (new geographical boundaries implemented circa 2022 [@neighbourhoodscite]) was selected instead of taking data from the previous 140 Neighbourhood configuration to reflect the current City of Toronto neighbourhood composition. @fig-map provides a visual representation of the 10 most high-risk neighbourhoods, where 1 = West Humber-Claireville; 2 = York University Heights; 3 = Annex; 4 = Kensington-Chinatown; 5 = Wellington Place; 6 = Yonge-Bay Corridor; 7 = Downtown Yonge East; 8 = Moss Park; 9 = West Hill. 'NSA' is listed within the top 10 high-risk neighbourhoods; however, it is not defined on Open Data Toronto, the Toronto Police Service's website, or any other identifiable resource. As it cannot be defined, the specificity of the variable or neighbourhood boundary is not of great concern, as we understand that this unidentified region sits in the top 10 regardless.
 
-![A map of the composition of neighbourhoods in Toronto, where nine of the top 10 high-risk neighbourhood are highlighted in blue.](borough_map.jpg){#fig-map}
+![A map of the composition of neighbourhoods in Toronto, where nine of the top 10 high-risk neighbourhoods are highlighted in blue.](borough_map.jpg){#fig-map}
 
-Ultimately, my analysis found that Toronto Police Services have not been successful in materially reducing the frequency of major crimes due to the fact that there is only minute, positional variance within the stratification of the 10 most affected neighbourhoods. Conversely, my analysis of least affected neighbourhoods brought to attention a pattern wherein the Toronto Police Service seem to be more effective at maintaining a low crime rate in a geographical area which *already* retains a low major crime frequency, as the variation is minimal. These results affirm the complex interplay of socio-economic conditions and violent crime, most notably assault; thus underscoring the absolute role of the embodiment of restorative justice within policing practices.
+Ultimately, the analysis indicates that Toronto Police Services have not been successful in materially reducing the frequency of major crimes. This conclusion is drawn from the observation of minimal positional variance within the stratification of the 10 most affected neighbourhoods. Conversely, the examination of the least affected neighbourhoods reveals a pattern wherein the Toronto Police Service appears to be more effective at maintaining a low crime rate in areas that already exhibit low major crime frequencies, with minimal variation. These findings affirm the intricate interplay of socio-economic conditions and violent crime, most notably assault; thus underscoring the absolute role of the embodiment of restorative justice within policing practices.
 
 In the Data section, the acquisition of the Major Crime Indicators data set is discussed, as well as the data cleaning process applied to the data prior to initial analysis. The Results section follows with analyzing persistent patterns in major crime frequency from 2014 to 2023, inclusive, and examining the specific crime category of Assault to identify any subtle meaning within the data. The discussion section then synthesizes these analyses, concluding that there is no material reduction in major crime frequencies in high-risk neighbourhoods over the past decade. The paper concludes with a brief look into the broader socio-economic factors which contribute to the complex composition of major crime and thus overall crime rates.
 
 # Data
 
 Data used in this paper was retrieved from the City of Toronto's Open Data Portal [@opendatacite]
-which is accessed through the Open Data Toronto online library. Open Data Toronto acquired their data from Toronto Police Services, who also originally collected the data. While data from the Toronto Police Services is heavily referenced and reproduced, it is important to consider that as police forces collect boundless amounts of data, we empirically know little "about the quality of the data coming into police data management systems" [@policedata]. However, there does also appear to be a positive relationship between police forces' active use of the data and caring about the quality of the data [@policedata]. The data source used is named `Major Crime Indicators` [@majorcrimecite] which was retrieved to analyze major crime reports across Toronto geographical neighbourhoods, during the time period of 2014 to 2023, inclusive. The data was collected, cleaned and analyzed in the programming language `R` [@citeR]. Supplementary libraries that were utilized during the analysis and compilation of the data set include `tidyverse` [@tidyversecite], `knitr` [@knitrcite], `janitor` [@janitorcite], `dbplyr` [@dbplyrcite], and `ggplot2` [@ggplotcite].
+which is accessed through the Open Data Toronto online library. Open Data Toronto acquired their data from Toronto Police Services, who originally collected the data. While data from the Toronto Police Services is heavily referenced and reproduced, it is important to consider that as police forces collect boundless amounts of data, we empirically know little "about the quality of the data coming into police data management systems" [@policedata]. However, there does also appear to be a positive relationship between police forces' active use of the data and caring about the quality of the data [@policedata]. The data source used is named `Major Crime Indicators` [@majorcrimecite] which was retrieved to analyze major crime reports across Toronto geographical neighbourhoods, during the time period of 2014 to 2023, inclusive. The data was collected, cleaned and analyzed in the programming language `R` [@citeR]. Supplementary libraries that were utilized during the analysis and compilation of the data set include `tidyverse` [@tidyversecite], `knitr` [@knitrcite], `janitor` [@janitorcite], `dbplyr` [@dbplyrcite], and `ggplot2` [@ggplotcite].
 
 ## Frequency of Major Crime Indicators
 
@@ -135,13 +135,9 @@ cleaned_crime_data <-
   )
 ```
 
-To begin, I looked at the frequency of the five major crime indicators in Toronto 
-during the period of 2014 to 2023, inclusive. There are 372,899 entries across 
-the 10 year period.
+To initiate the analysis, an examination was conducted on the frequency of the five major crime indicators in Toronto during the period from 2014 to 2023, inclusive. The data set encompassed 372,899 entries across the 10-year span.
 
-I displayed the data in both absolute form, using the number of reports of 
-each major crime indicator; and relative form as well, using the relative 
-percentage of each major crime indicator.
+The data was then presented in both absolute and relative forms. Absolute form entailed the number of reports for each major crime indicator, while relative form depicted the percentage of each major crime indicator relative to the total.
 
 ```{r}
 #| echo: false
@@ -167,10 +163,7 @@ kable(crime_category_freq_percent,
 
 ```
 
-As a comparison to the above @tbl-t1, I have simulated the distribution of 372,899 
-random samples of major crimes, shown below. The differing assumption here for the 
-simulation, is that each crime is equally likely, and sampled at random. Similar to how 
-the data is portrayed above, I displayed the data in both absolute and relative form.
+As a comparison to the above @tbl-t1, a simulation was conducted to simulate the distribution of 372,899 random samples of major crimes. The simulation assumed that each crime was equally likely and sampled at random. Similar to the presentation of the actual data, both absolute and relative forms were utilized to display the simulated data.
 
 ```{r}
 #| echo: false
@@ -210,24 +203,19 @@ kable(crime_category_freq_percent_sim,
       caption = "**Simulated Portion of Each Crime Category**")
 ```
 
-The Law of Large Numbers states that when taking a very large number of independent 
+The Law of Large Numbers states that when taking a considerable number of independent 
 and identical samples, the average of the results converges to the true value [@hsu1947complete]. 
 Since each of the five categories are equally likely to be chosen in the simulation, 
-I expect that for a large sample size as conducted for the table above, each 
-category's portion will converge to 20%.
+it is anticipated that, for a large sample size akin to the one employed for the table above, each category's proportion will converge to approximately 20%.
 
-Comparing the @tbl-t1 and @tbl-t2 of relative portions of major crimes, I observed that 
-there is a significantly higher skew towards the number of actual assault reports, as 
-the relative portion is over half of all major crime reports. Robbery and 
-Theft Over [a certain dollar amount] have the largest negative deviations from 
-the simulated values of 20%, in which the assumption was that all major crimes 
-were equally likely and randomly chosen.
+Upon comparing the relative portions of major crimes presented @tbl-t1 and @tbl-t2 of relative portions of major crimes, I observed that a notable skew is evident towards the number of actual assault reports, with the relative proportion exceeding half of all major crime reports. Additionally, both Robbery and Theft Over [a certain dollar amount] exhibit the most substantial negative deviations from the simulated values of 20%, under the assumption that all major crimes were equally likely and randomly selected.
 
 ## Progression of Major Crime Frequency
 
-In the first section, I observed the frequency of major crimes over the time period in which the data was grouped by the five major crime indicators, which shed light on the major crime indicators that tend to occur more and less often. 
+In the initial section, an examination was conducted on the frequency of major crimes over the specified time period, wherein the data was categorized by the five major crime indicators. This analysis provided insights into the major crime indicators that exhibited higher and lower frequencies. 
 
-Now, I will display the progression of the number of annual major crime reports made over the 10-year period. I used `ggplot2` [@ggplotcite] to generate @fig-g2 with the years from 2014 to 2023, inclusive, in chronological order on the x-axis, which more clearly illustrates the trend of major crime occurrences over time.
+Subsequently, the progression of the annual number of major crime reports over the 10-year period was displayed. To achieve this, `ggplot2` [@ggplotcite] was utilizied to generate @fig-g2, where the years from 2014 to 2023, inclusive, were arranged in chronological order along the x-axis. This visualization enhanced the clarity in illustrating the trend of major crime occurrences over time.
+
 
 ```{r}
 #| echo: false
@@ -237,13 +225,15 @@ Now, I will display the progression of the number of annual major crime reports 
 
 #Generating bar graph
 ggplot(cleaned_crime_data, aes(x = Year)) +
-  geom_bar(fill = "skyblue", color = "black") +
+  geom_bar(fill = "grey", color = "black") +
   labs(title = "Number of Major Crimes Each Year", x = "Year",
        y = "Number of Major Crimes Reported") +
   theme_minimal() +
   scale_x_continuous(breaks = unique(cleaned_crime_data$Year)) +
   theme(panel.grid = element_blank(), text = element_text(family = "Times"),
-        plot.title = element_text(hjust = 0.5))
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_text(margin = margin(t = 12)),
+        axis.title.y = element_text(margin = margin(r = 12)))
 
 ```
 
@@ -251,13 +241,9 @@ ggplot(cleaned_crime_data, aes(x = Year)) +
 
 ## Upper and Lower Tail Analysis of Neighbourhoods Affected By All Five Major Crimes
 
-In this section, I will analyze the neighbourhoods **most** and **least** affected by all
-five major crime indicators. Then, in the following section, I will analyze the neighbourhoods 
-most and least affected by violent crimes, namely only reported assaults.
+In this section, an analysis was conducted on the neighbourhoods most and least affected by all five major crime indicators. Subsequently, in the following section, an analysis was performed on the neighbourhoods most and least affected by violent crimes, specifically reported assaults
 
-For the time period of 2014 to 2023, inclusive, I compared the 10 
-neighbourhoods in which the most major crimes (MC) were reported in the former five 
-years with the 10 most affected neighbourhoods in the latter five years, shown in @tbl-t3 and @tbl-t4 below.
+For the time period spanning from 2014 to 2023, inclusive, a comparison was made between the 10 neighbourhoods where the highest number of major crimes (MC) were reported in the former five years and the 10 most affected neighbourhoods in the latter five years, as depicted in @tbl-t3 and @tbl-t4 below.
 
 ```{r}
 #| echo: false
@@ -339,7 +325,7 @@ Evidently, out of the 10 neighbourhoods most affected by major crimes in
 the former five years of the aforementioned time period, all 10 of those 
 neighbourhoods appear again in the latter five years. 
 
-It is important to examine both ends of the neighbourhood crime spectrum to understand more about the distribution of reported crimes across Toronto neighbourhoods. Now I will observe whether the safest neighbourhoods in the former five years of the time period also remain the safest neighbourhoods in the latter five years, or if they differ materially.
+It was imperative to scrutinize both ends of the neighbourhood crime spectrum to gain a deeper understanding of the distribution of reported crimes across Toronto neighbourhoods. An examination was conducted to ascertain whether the safest neighbourhoods in the former five years of the time period also retained their status as the safest neighbourhoods in the latter five years, or if there were material differences.
 
 ```{r}
 #| echo: false
@@ -417,22 +403,15 @@ kable(table_data_4, caption = "**The 10 Neighbourhoods with the Least MC Reporte
 
 ```
 
-I observed from the two tables above, that seven of the 10 neighbourhoods least 
-affected by major crimes in the first half of the last decade also carry over as the least 
-affected neighbourhoods in the second half of the last decade. This figure can be 
-compared to the previously compiled number of all 10 of the 10 neighbourhoods 
-most affected by major crimes also carrying over to the second half of the decade. 
+From the two tables above, it was observed that seven of the 10 neighbuorhoods least affected by major crimes in the first half of the last decade also persisted as the least affected neighbourhoods in the second half of the last decade. This figure can be compared to the previously compiled number of all 10 of the 10 neighbourhoods most affected by major crimes also persisting into the second half of the decade.
 
-As an aside; I consulted ChatGPT 3.5 to assist in generating @tbl-t3, @tbl-t4, @tbl-t5, and @tbl-t6, along with the total in each table [@chatcite].
+As an aside; ChatGPT 3.5 was consulted to assist in generating @tbl-t3, @tbl-t4, @tbl-t5, and @tbl-t6, along with the total in each table [@chatcite].
 
 ## Upper and Lower Tail Analysis of Neighbourhoods Affected By Violent Crimes (Assaults)
 
-As stated in the prior section, I aimed to narrow my search to examine only 
-violent crimes, namely assaults reported in each neighbourhood.
+As mentioned in the preceding section, the focus was narrowed to examine only violent crimes, specifically assaults reported in each neighbourhood.
 
-For the time period of 2014 to 2023, inclusive, I compared the 10 neighbourhoods 
-in which the most assault crimes were reported in the former five years as shown in 
-the above table, with the 10 most affected neighbourhoods in the latter five years, 
+For the time period of 2014 to 2023, inclusive, a comparison was made between the 10 neighbourhoods where the most assault crimes were reported in the former five years, as displayed in the above table, and the 10 most affected neighburhoods in the latter five years, as illustrated below ins, 
 as shown below in @tbl-t7 and @tbl-t8.
 
 ```{r}
@@ -512,11 +491,9 @@ kable(table_data_2, caption = "**Top 10 Neighborhoods with Most Assaults
 
 ```
 
-I deduced that out of the 10 neighbourhoods most affected by assault crimes in 
-the former five years of the aforementioned time period, eight of those same 
-neighbourhoods appear again in the latter five years.
+It was deduced that out of the 10 neighbourhoods most affected by assault crimes in the former five years of the mentioned time period, eight of those same neighbourhoods reappeared in the latter five years..
 
-Once again, we must examine both ends of the spectrum, and so I will display the results in @tbl-t9 and @tbl-t10 for the 10 neighbourhoods least affected by assaults in the first five years, and then the 10 neighbourhoods least affected by assaults in the latter five years of the last decade.
+Once again, it is crucial to examine both ends of the spectrum. Therefore, the results for the 10 neighbourhoods least affected by assaults in the first five years will be displayed, followed by the 10 neighbourhoods least affected by assaults in the latter ive years of the last decade, as shown in @tbl-t9 and @tbl-t10.
 
 ```{r}
 #| echo: false
@@ -595,58 +572,47 @@ kable(table_data_2, caption = "**The 10 Neighbourhoods with the Least Assaults
 
 ```
 
-I observed from @tbl-t9 and @tbl-t10 above, that six of the 10 neighbourhoods least affected 
-by assaults in the first half of the last decade also carry over as the least 
-affected neighbourhoods in the second half of the last decade. This figure can be 
-compared to the previously compiled number of eight of the 10 neighbourhoods most affected 
-by assaults also carrying over to the second half of the decade.
+It was observed from@tbl-t9 and @tbl-t10 above, that six of the 10 neighbourhoods least affected by assaults in the first half of the last decade also carried over as the least affected neighbourhoods in the second half of the last decade. This figure can be compared to the previously compiled number of eight of the 10 neighbourhoods most affected by assaults also carrying over to the second half of the decade.
 
-As an aside; I consulted ChatGPT 3.5 to assist in generating @tbl-t7, @tbl-t8, @tbl-t9, and @tbl-t10, along with the total in each table [@chatcite].
+As an aside; ChatGPT was consulted 3.5 to assist in generating @tbl-t7, @tbl-t8, @tbl-t9, and @tbl-t10, along with the total in each table [@chatcite].
 
 ## Comparison of Results in Neighbourhoods Affected by All Major Crimes (MCs) and only Violent Crimes (VCs)
 
-When comparing the progression of the 10 neighbourhoods most affected by major crimes (MCs) over the time period of 2014 to 2023, inclusive, to the 10 neighbourhoods least affected by MCs over the same time period, I noticed that while three of the least affected neighbourhoods in 
-the first five years were replaced by other neighbourhoods whose MC rates reduced 
-comparatively, this was not the case for neighbourhoods that were most affected by MCs.
+When comparing the progression of the 10 neighbourhoods most affected by major crimes (MCs) over the time period of 2014 to 2023, inclusive, to the 10 neighbourhoods least affected by MCs over the same time period, it was noted that while three of the least affected neighbourhoods in the first five years were replaced by other neighbourhoods whose MC rates reduced comparatively, this was not the case for neighbourhoods that were most affected by MCs.
 
 While the ordering of the most affected neighbourhoods may have changed, the fact 
 is that those same 10 neighbourhoods were still the most affected even in the latter five 
 years of the time period. 
 
 A similar phenomenon occurred when comparing the progression of the 10 neighbourhoods most affected by violent crimes (VCs) to the 10 neighbourhoods least affected by VCs over 
-the aforementioned time period. For neighbourhoods most affected by VCs, I found that 
-only two neighbourhoods were replaced moving into the second half of the decade, whereas for 
-neighbourhoods least affected by VCs, four of the neighbourhoods were replaced moving 
-into the latter half of the decade.
+the aforementioned time period. For neighbourhoods most affected by VCs, it was found that only two neighbourhoods were replaced moving into the second half of the decade, whereas for neighbourhoods least affected by VCs, four of the neighbourhoods were replaced moving into the latter half of the decade.
 
-From this, we can observe that for neighbourhoods in which major crime rates are already low, there is more variation in those neighbourhoods having their crime rates reduced comparatively to other neighbourhoods with similarly low crime rates, implying that police 
+From this, it can be observed that for neighbourhoods in which major crime rates are already low, there is more variation in those neighbourhoods having their crime rates reduced comparatively to other neighbourhoods with similarly low crime rates, implying that police 
 intervention may be more effective in affecting crime rates of generally safe 
 neighbourhoods.
 
 However, for neighbourhoods in which their major crime rates are already the highest, there is very little progression over the years in those neighbourhoods crime rates dropping comparatively to other neighbourhoods. Thus, there is very little evidence that 
 Toronto Police are able to reduce the prevalence and frequency of major crimes 
-occurring in the most affected neighbourhoods. In the next section, I will discuss 
-possible causes of this data, and examine a possible relationship between crime rates 
-and the Toronto Police Service's Operating Impact.
+occurring in the most affected neighbourhoods. In the next section, possible causes of this data will be discussed, and a possible relationship between crime rates and the Toronto Police Service's Operating Impact will be examined.
 
 # Discussion
 
-Overall, I cannot say there has been a material reduction in the frequency of major crimes in high-risk Toronto neighbourhoods over the past 10 years. Though their stratification may differ, the 10 variable neighbourhoods which experience the highest frequency have remained the same from 2014 to 2023, inclusive. Socio-economic, political and cultural events of the last decade, and their intrinsic relationship with the nature of crime and policing may potentially explain the 17.6% raise in major crime indicators in 2023 [@torontosuncite]. 
+Overall, it cannot be asserted that there has been a material reduction in the frequency of major crimes in high-risk Toronto neighbourhoods over the past 10 years. Though their stratification may differ, the 10 variable neighbourhoods which experience the highest frequency have remained the same from 2014 to 2023, inclusive. Socio-economic, political and cultural events of the last decade, and their intrinsic relationship with the nature of crime and policing may potentially explain the 17.6% raise in major crime indicators in 2023 [@torontosuncite]. 
 
 It is certain that socio-economic and environmental factors contribute considerably to the temporal and spatial distribution of violent crimes. This is particularly true of urban areas, wherein an ‘urban area’ refers to a geographic area with socio-economic, demographic and built-environment characteristics which effect an informal separation from comparably affluent areas [@builtenvironment].
 
 Considering this broader context, it is evident that the living impact of events such as the economic fluctuations; the COVID-19 pandemic; the Black Lives Matter Movement and responsive over-policing; and Trump-era weaponized political polarization and consequential social unrest (to name a few) all contribute to the complex composition of major crimes and thus overall crime rates.
 
-We can specifically consider the 2020 social movement to de-fund police services across North America—-assuming Toronto Police Services were subject to de-funding, we can assume the effective trade-off becomes the exchange of over-policing for a significantly reduced operating impact [@tvocite]. But just how much of an impact might this have on crime rates in Toronto neighbourhoods?
+A specific consideration is the 2020  social movement to de-fund police services across North America—-assuming Toronto Police Services were subject to de-funding, we can assume the effective trade-off becomes the exchange of over-policing for a significantly reduced operating impact [@tvocite]. But just how much of an impact might this have on crime rates in Toronto neighbourhoods?
 
-To analyze this relationship, I generated a graph, @fig-g3, which measures the correlation between 
+To analyze this relationship, a graph was generated, @fig-g3, which measures the correlation between 
 two variables. The first variable is the number of major crimes reported annually 
 in Toronto, as shown in @fig-g2. The second variable is the annual 
 Total Projects Operating Impact for the Toronto Police Service. Each variable 
 contains a single data value for each year in the 10-year time period of 2014 
 to 2023, inclusive.
 
-In @fig-g3 below, I consulted ChatGPT 3.5 to include the line of best fit and the calculated linear correlation coefficient [@chatcite]. 
+In @fig-g3 below, ChatGPT 3.5 was consulted to include the line of best fit and the calculated linear correlation coefficient [@chatcite]. 
 
 ```{r}
 #| echo: false
@@ -680,8 +646,9 @@ ggplot(data, aes(x = MajorCrimes, y = TotalProjectsImpact)) +
   theme_minimal() +
   theme(text = element_text(family = "Times"), 
         plot.title = element_text(hjust = 0.5),
-        plot.subtitle = element_text(hjust = 0.5))
-
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.title.x = element_text(margin = margin(t = 12)),
+        axis.title.y = element_text(margin = margin(r = 12)))
 ```
 
 Based on the linear correlation coefficient of 0.577 between the two variables for 
@@ -706,7 +673,7 @@ other major crime indicators still represent severe crimes.
 
 # Conclusion
 
-This paper analyzes the Toronto Police Services’ success in materially reducing the frequency of major crime indicators in high-risk neighbourhoods across Toronto from 2014 to 2023, inclusive. Data analysis shows that the Toronto Police Service has **not** materially reduced the frequency of major crime indicators in the last 10 years, instead showing a correlation between crime rate variation and historically low-risk neighbourhoods. This correlation points to the unrest which exists in the bedrock of the top 10 high-risk neighbourhoods as a result of socio-economic, demographic and built-environment characteristics. This suggests that the complex systems which underscore police-reported crime and the performance of violent crime itself revolve deeply around large- and small-scale factors, events and phenomena, thus underscoring the desperation of the Toronto public to see the Toronto Police Services truly embody restorative justice within their policing practices.
+This paper analyzed the Toronto Police Services’ success in materially reducing the frequency of major crime indicators in high-risk neighborhoods across Toronto from 2014 to 2023, inclusive. Data analysis revealed that the Toronto Police Service did not materially reduce the frequency of major crime indicators in the last 10 years. Instead, a correlation was observed between crime rate variation and historically low-risk neighborhoods. This correlation suggests that the unrest existing in the foundation of the top 10 high-risk neighborhoods is influenced by socio-economic, demographic, and built-environment characteristics. These findings indicate that the complex systems underlying police-reported crime and the performance of violent crime are deeply intertwined with various large- and small-scale factors, events, and phenomena. This underscores the public's desire in Toronto to witness the Toronto Police Services truly embody restorative justice within their policing practices.
 
 \newpage
 
